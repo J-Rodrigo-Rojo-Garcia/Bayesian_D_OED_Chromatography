@@ -11,7 +11,7 @@ You need to install:
 3) OpenMP
 4) Python3 and libraries: "Numpy, Scipy, Matplotlib"
 
-There are three folders, for 8, 15 and 20 time measurements.
+There are three folders. They are for the experiments made with 8, 15 and 20 time measurements.
 
 - Run in Matlab for each folder the script called: "Scripts_Matlab.m"
 - It can take several hours
