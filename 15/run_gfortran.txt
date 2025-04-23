@@ -1,0 +1,55 @@
+Run gfortran
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Inital procedure
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Run in terminal the next command
+
+"export OMP_NUM_THREADS=N"
+
+where N is the number of threads selected by the user.
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run FM Evaluation  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Forward_Mapping_Eval.f95 -o FM.out -fopenmp
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run OED True
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 OED_True.f95 -o oed_true.out -fopenmp
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run Training (Total model)  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Training_Smolyak_Total.f95 -o training_total.out -fopenmp
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run Training (Individual models)  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Training_Smolyak_Individual.f95 -o training_individual.out -fopenmp
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run MCMC Training  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Training_Smolyak_Individual_MCMC.f95 -o training_mcmc_individual.out -fopenmp
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run MCMC  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Forward_Mapping_MCMC.f95 -o FM_mcmc.out -fopenmp
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run Time Benchmark
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/random_module.f95 fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 fortran_modules/OED.f95 Forward_Mapping_Time.f95 -o FM_time.out -fopenmp
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  Run OED multiple
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+gfortran fortran_modules/data_module.f95 fortran_modules/Directories_Data.f95 fortran_modules/Variables_Reading.f95 fortran_modules/Variables_Writing.f95 fortran_modules/Chromatography_2D_Dispersive.f95 Multiple_Eval.f95 -o multiple_eval.out -fopenmp
+
