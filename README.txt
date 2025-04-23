@@ -6,7 +6,7 @@ This is the Github repository of the article:
 
 You need to install:
 
-1) Matlab 2023a or more new versions
+1) Matlab 2023a or more recent versions
 2) Fortran 95
 3) OpenMP
 4) Python3 and libraries: "Numpy, Scipy, Matplotlib"
